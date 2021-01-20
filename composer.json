@@ -1,0 +1,13 @@
+{
+    "name": "denis909/yii2-command",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "denis909\\yii\\": ""
+        }
+    },
+    "require": {
+        "psr/log": "*",
+        "denis909/yii2-console-logger": "*"
+    }
+}
