@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-use Psr\Log\LoggerTrait;
+use yii\helpers\ArrayHelper;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Denis909\ConsoleLogger\ConsoleLogger;
@@ -12,32 +12,28 @@ class Command extends \yii\console\Controller
 
     use LoggerAwareTrait;
 
-    use LoggerTrait;
-
-    public $debug;
-
-    public function options($actionID)
-    {
-        return ['debug'];
-    }
+    public $silent;
 
     public function init()
     {
         parent::init();
 
-        if ($this->debug)
-        {
-            $this->setLogger(new ConsoleLogger);
-        }
-        else
+        $this->setLogger(new ConsoleLogger);
+    }
+
+    public function options($actionID)
+    {
+        return ArrayHelper::merge(parent::options($actionID), ['silent']);
+    }
+
+    public function beforeAction($action)
+    {
+        if ($this->silent)
         {
             $this->setLogger(new NullLogger);
         }
-    }
 
-    public function log($level, $message, array $context = [])
-    {
-        $this->logger->log($level, $message, $context);
+        return parent::beforeAction($action);
     }
 
 }
