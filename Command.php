@@ -5,7 +5,7 @@ namespace denis909\yii;
 use Psr\Log\LoggerTrait;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use denis909\yii\ConsoleLogger;
+use Denis909\ConsoleLogger\ConsoleLogger;
 
 class Command extends \yii\console\Controller
 {
