@@ -5,7 +5,7 @@ namespace denis909\yii;
 use yii\helpers\ArrayHelper;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Denis909\ConsoleLogger\ConsoleLogger;
+use denis909\yii\ConsoleLogger;
 
 class Command extends \yii\console\Controller
 {
